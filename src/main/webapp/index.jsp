@@ -75,52 +75,15 @@
 	<div class="container-fluid">
 		<div class="row">
 			<!-- sidebar -->
-			<jsp:include page="component/sidebar.jsp" />
-
-
-			<main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-
-
-				<h2>Section title</h2>
-				<div class="table-responsive">
-					<table class="table table-striped table-sm">
-						<thead>
-							<tr>
-								<th scope="col">mID</th>
-								<th scope="col">email</th>
-								<th scope="col">name</th>
-								<th scope="col">age</th>
-								<th scope="col">address</th>
-								<th scope="col">photo</th>
-								<th scope="col">authority</th>
-							</tr>
-						</thead>
-						<tbody>
-							<c:forEach items="${mList}" var="m">
-								<tr>
-									<td>${m.mID}</td>
-									<td>${m.email}</td>
-									<td>${m.name}</td>
-									<td>${m.age}</td>
-									<td>${m.address}</td>
-									<td></td>
-									<td></td>
-									<td><a href="DeleteMemberByID.do?mID=${m.mID}"><button>刪除</button></a>
-									</td>
-									<td><a href="GetUpdatePage.do?mID=${m.mID}"><button>更新</button></a>
-									</td>
-								</tr>
-							</c:forEach>
-						</tbody>
-					</table>
-				</div>
-			</main>
-
-
+			<jsp:include page="component/sidebar.jsp"/>
+			
+			
+		
 		</div>
 	</div>
 
-	<footer> </footer>
+	<footer> 
+	</footer>
 
 
 

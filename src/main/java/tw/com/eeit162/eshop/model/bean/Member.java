@@ -11,18 +11,37 @@ public class Member implements Serializable{
 	private String name;
 	private int age;
 	private String address;
+	private String authority;
 	
-	public Member(int mID, String email, String password, String name, int age, String address) {
-		this.mID = mID;
+	public Member() {
+	}
+	
+	public Member(String email, String password, String name,String address) {
+		this.email = email;
+		this.password = password;
+		this.name = name;
+		this.address = address;
+	}
+	
+	public Member(String email, String password, String name, int age, String address) {
 		this.email = email;
 		this.password = password;
 		this.name = name;
 		this.age = age;
 		this.address = address;
 	}
+	public Member(int mID, String email, String password, String name, int age, String address, String authority) {
+		this.mID = mID;
+		this.email = email;
+		this.password = password;
+		this.name = name;
+		this.age = age;
+		this.address = address;
+		this.authority = authority;
+	}
+	
+	
 
-	
-	
 	public int getmID() {
 		return mID;
 	}
@@ -71,10 +90,20 @@ public class Member implements Serializable{
 		this.address = address;
 	}
 
+	public String getAuthority() {
+		return authority;
+	}
+	
+	public void setAuthority(String authority) {
+		this.authority = authority;
+	}
+
 	@Override
 	public String toString() {
 		return "Member [mID=" + mID + ", email=" + email + ", password=" + password + ", name=" + name + ", age=" + age
-				+ ", address=" + address + "]";
+				+ ", address=" + address + ", authority=" + authority + "]";
 	}
+	
+	
 	
 }

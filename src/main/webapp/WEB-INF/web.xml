@@ -9,4 +9,44 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+  <servlet>
+    <description></description>
+    <display-name>ShowAllMember</display-name>
+    <servlet-name>ShowAllMember</servlet-name>
+    <servlet-class>tw.com.eeit162.eshop.controller.ShowAllMember</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ShowAllMember</servlet-name>
+    <url-pattern>/ShowAllMember</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>RegistMember</display-name>
+    <servlet-name>RegistMember</servlet-name>
+    <servlet-class>tw.com.eeit162.eshop.controller.RegistMember</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>RegistMember</servlet-name>
+    <url-pattern>/RegistMember</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>GetUpdatePage</display-name>
+    <servlet-name>GetUpdatePage</servlet-name>
+    <servlet-class>tw.com.eeit162.eshop.controller.GetUpdatePage</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GetUpdatePage</servlet-name>
+    <url-pattern>/GetUpdatePage</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>UpdateMember</display-name>
+    <servlet-name>UpdateMember</servlet-name>
+    <servlet-class>tw.com.eeit162.eshop.controller.UpdateMember</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UpdateMember</servlet-name>
+    <url-pattern>/UpdateMember</url-pattern>
+  </servlet-mapping>
 </web-app>

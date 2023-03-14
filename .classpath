@@ -13,8 +13,5 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
-	<classpathentry kind="lib" path="C:/JDBC/lib/mssql-jdbc-11.2.3.jre11.jar"/>
-	<classpathentry kind="lib" path="C:/Servlet/apache-tomcat-10.1.7/webapps/examples/WEB-INF/lib/taglibs-standard-impl-1.2.5-migrated-0.0.1.jar"/>
-	<classpathentry kind="lib" path="C:/Servlet/apache-tomcat-10.1.7/webapps/examples/WEB-INF/lib/taglibs-standard-spec-1.2.5-migrated-0.0.1.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

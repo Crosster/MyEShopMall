@@ -83,36 +83,37 @@
 
 				<h2>Section title</h2>
 				<div class="table-responsive">
-					<table class="table table-striped table-sm">
-						<thead>
-							<tr>
-								<th scope="col">mID</th>
-								<th scope="col">email</th>
-								<th scope="col">name</th>
-								<th scope="col">age</th>
-								<th scope="col">address</th>
-								<th scope="col">photo</th>
-								<th scope="col">authority</th>
-							</tr>
-						</thead>
-						<tbody>
-							<c:forEach items="${mList}" var="m">
+					<form action="UpdateMember.do" method="post">
+						<table class="table table-striped table-sm">
+							<thead>
 								<tr>
-									<td>${m.mID}</td>
-									<td>${m.email}</td>
-									<td>${m.name}</td>
-									<td>${m.age}</td>
-									<td>${m.address}</td>
-									<td></td>
-									<td></td>
-									<td><a href="DeleteMemberByID.do?mID=${m.mID}"><button>刪除</button></a>
-									</td>
-									<td><a href="GetUpdatePage.do?mID=${m.mID}"><button>更新</button></a>
-									</td>
+									<th scope="col">mID</th>
+									<th scope="col">email</th>
+									<th scope="col">password</th>
+									<th scope="col">name</th>
+									<th scope="col">age</th>
+									<th scope="col">address</th>
+									<th scope="col">photo</th>
+									<th scope="col">authority</th>
 								</tr>
-							</c:forEach>
-						</tbody>
-					</table>
+							</thead>
+							<tbody>
+								<tr>
+									<td>${mData.mID}</td>
+									<td><input name="email" type="text" value="${mData.email}"></td>
+									<td><input name="pwd" type="text" value="${mData.password}"></td>
+									<td><input name="name" type="text" value="${mData.name}"></td>
+									<td>${mData.age}</td>
+									<td><input name="address" type="text" value=""
+										placeholder="${mData.address}"></td>
+									<td></td>
+									<td></td>
+								</tr>
+							</tbody>
+
+						</table>
+					<button type="submit" class="btn btn-primary btn-lg">送出修改</button>
+					</form>
 				</div>
 			</main>
 
