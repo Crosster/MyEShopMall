@@ -10,22 +10,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="">
-<meta name="author"
-	content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
 <meta name="generator" content="Hugo 0.88.1">
-<title>Dashboard Template · Bootstrap v5.1</title>
+<title>修改頁面</title>
 
 
 <!-- CDN -->
-<link
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css"
-	rel="stylesheet"
-	integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU"
-	crossorigin="anonymous">
-<script
-	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
-	integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
-	crossorigin="anonymous"></script>
+<jsp:include page="component/cdnStr.jsp" />
 
 <!-- Bootstrap core CSS -->
 <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -88,8 +78,8 @@
 									<td><input name="mName" type="text" value="${mData.name}"></td>
 									<td>${mData.age}</td>
 									<td><input name="mAddress" type="text" value="${mData.address}"></td>
-									<td></td>
-									<td></td>
+									<td><img src="GetPhoto.do?mID=${mData.mID}" style="width: 100px;"></td>
+									<td><input name="mAuthority" type="text" value="${mData.authority}"></td>
 								</tr>
 							</tbody>
 

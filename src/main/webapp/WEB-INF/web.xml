@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="https://jakarta.ee/xml/ns/jakartaee" xmlns:web="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_5_0.xsd" version="5.0">
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="https://jakarta.ee/xml/ns/jakartaee" xmlns:web="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_5_0.xsd http://xmlns.jcp.org/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="5.0">
   <display-name>MyEShopMall</display-name>
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
@@ -58,5 +58,55 @@
   <servlet-mapping>
     <servlet-name>UserLogin</servlet-name>
     <url-pattern>/UserLogin</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>GetPhoto</display-name>
+    <servlet-name>GetPhoto</servlet-name>
+    <servlet-class>tw.com.eeit162.eshop.controller.GetPhoto</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GetPhoto</servlet-name>
+    <url-pattern>/GetPhoto</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ShowAllProduct</display-name>
+    <servlet-name>ShowAllProduct</servlet-name>
+    <servlet-class>tw.com.eeit162.eshop.controller.ShowAllProduct</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ShowAllProduct</servlet-name>
+    <url-pattern>/ShowAllProduct</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ShowShopperProduct</display-name>
+    <servlet-name>ShowShopperProduct</servlet-name>
+    <servlet-class>tw.com.eeit162.eshop.controller.ShowShopperProduct</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ShowShopperProduct</servlet-name>
+    <url-pattern>/ShowShopperProduct</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ShowProductByID</display-name>
+    <servlet-name>ShowProductByID</servlet-name>
+    <servlet-class>tw.com.eeit162.eshop.controller.ShowProductByID</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ShowProductByID</servlet-name>
+    <url-pattern>/ShowProductByID</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>UpdateProduct</display-name>
+    <servlet-name>UpdateProduct</servlet-name>
+    <servlet-class>tw.com.eeit162.eshop.controller.UpdateProduct</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UpdateProduct</servlet-name>
+    <url-pattern>/UpdateProduct</url-pattern>
   </servlet-mapping>
 </web-app>

@@ -13,22 +13,11 @@
 <meta name="author"
 	content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
 <meta name="generator" content="Hugo 0.88.1">
-<title>Dashboard Template · Bootstrap v5.1</title>
+<title>ModPage</title>
 
 
 <!-- CDN -->
-<link
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css"
-	rel="stylesheet"
-	integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU"
-	crossorigin="anonymous">
-<script
-	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
-	integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
-	crossorigin="anonymous"></script>
-
-<!-- Bootstrap core CSS -->
-<link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
+<jsp:include page="component/cdnStr.jsp" />
 
 <style>
 .bd-placeholder-img {
@@ -58,13 +47,13 @@
 	<div class="container-fluid">
 		<div class="row">
 			<!-- sidebar -->
-			<jsp:include page="component/sidebar.jsp" />
+			<jsp:include page="component/sidebar.jsp"/>
 
 
 			<main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
 
 
-				<h2>Section title</h2>
+				<h2>控制台</h2>
 				<div class="table-responsive">
 					<table class="table table-striped table-sm">
 						<thead>
@@ -86,8 +75,8 @@
 									<td>${m.name}</td>
 									<td>${m.age}</td>
 									<td>${m.address}</td>
-									<td></td>
-									<td></td>
+									<td><img src="GetPhoto.do?mID=${m.mID}" style="width: 100px;"></td>
+									<td>${m.authority}</td>
 									<td><a href="DeleteMemberByID.do?mID=${m.mID}"><button>刪除</button></a>
 									</td>
 									<td><a href="GetUpdatePage.do?mID=${m.mID}"><button>更新</button></a>

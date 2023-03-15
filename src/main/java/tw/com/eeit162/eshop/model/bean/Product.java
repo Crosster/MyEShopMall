@@ -3,11 +3,22 @@ package tw.com.eeit162.eshop.model.bean;
 import java.util.Arrays;
 
 public class Product {
+
 	private int pID;
 	private String name;
 	private String type;
+	private int price;
+	private int number;
 	private byte[] photo;
 	private int f_mID;
+	
+	public Product(int pID, String name, String type, int price, int number) {
+		this.pID = pID;
+		this.name = name;
+		this.type = type;
+		this.price = price;
+		this.number = number;
+	}
 	
 	public Product() {
 	}
@@ -20,6 +31,17 @@ public class Product {
 		this.f_mID = f_mID;
 	}
 	
+	public Product(int pID, String name, String type, int price, int number, byte[] photo, int f_mID) {
+		super();
+		this.pID = pID;
+		this.name = name;
+		this.type = type;
+		this.price = price;
+		this.number = number;
+		this.photo = photo;
+		this.f_mID = f_mID;
+	}
+
 	public int getpID() {
 		return pID;
 	}
@@ -38,6 +60,18 @@ public class Product {
 	public void setType(String type) {
 		this.type = type;
 	}
+	public int getPrice() {
+		return price;
+	}
+	public void setPrice(int price) {
+		this.price = price;
+	}
+	public int getNumber() {
+		return number;
+	}
+	public void setNumber(int number) {
+		this.number = number;
+	}
 	public byte[] getPhoto() {
 		return photo;
 	}
@@ -50,10 +84,11 @@ public class Product {
 	public void setF_mID(int f_mID) {
 		this.f_mID = f_mID;
 	}
-	
+
 	@Override
 	public String toString() {
-		return "Product [pID=" + pID + ", name=" + name + ", type=" + type + ", photo=" + Arrays.toString(photo)
-				+ ", f_mID=" + f_mID + "]";
+		return "Product [pID=" + pID + ", name=" + name + ", type=" + type + ", price=" + price + ", number=" + number
+				+ ", photo=" + Arrays.toString(photo) + ", f_mID=" + f_mID + "]";
 	}
+	
 }

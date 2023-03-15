@@ -1,0 +1,92 @@
+USE MyEShopMall
+
+--drop table [dbo].[Product];
+--drop table [dbo].[Member];
+
+CREATE TABLE [dbo].[Member](
+	[mID] [int] primary key IDENTITY(1,1) NOT NULL,
+	[email] [nvarchar](50) NOT NULL,
+	[password] [nvarchar](50) NOT NULL,
+	[name] [nvarchar](50) NOT NULL,
+	[age] [int] NOT NULL,
+	[address] [nvarchar](100) NOT NULL,
+	[pic] [varbinary](max) NULL,
+	[authority] [nvarchar](10) NOT NULL
+);
+
+
+INSERT INTO [MyEShopMall].[dbo].[member](email, password, name, age, address, pic, authority)
+VALUES ('test1@example.com', 'password1', '小明', 20, '台北縣', (SELECT * FROM OPENROWSET(BULK N'C:\Servlet\WorkSpace\MyEShopMall\src\main\webapp\Img\User\user1.png', SINGLE_BLOB) as T1), 'admin'),
+('test2@example.com', 'password2', '小美', 22, '新北市', 		(SELECT * FROM OPENROWSET(BULK N'C:\Servlet\WorkSpace\MyEShopMall\src\main\webapp\Img\User\user2.png', SINGLE_BLOB) as T1), 'shopper'),
+('test3@example.com', 'password3', '小王', 25, '桃園縣', 		(SELECT * FROM OPENROWSET(BULK N'C:\Servlet\WorkSpace\MyEShopMall\src\main\webapp\Img\User\user3.png', SINGLE_BLOB) as T1), 'shopper'),
+('test4@example.com', 'password4', '小張', 28, '台中市', 		(SELECT * FROM OPENROWSET(BULK N'C:\Servlet\WorkSpace\MyEShopMall\src\main\webapp\Img\User\user4.png', SINGLE_BLOB) as T1), 'shopper'),
+('test5@example.com', 'password5', '小林', 30, '彰化縣', 		(SELECT * FROM OPENROWSET(BULK N'C:\Servlet\WorkSpace\MyEShopMall\src\main\webapp\Img\User\user5.png', SINGLE_BLOB) as T1), 'user'),
+('test6@example.com', 'password6', '小陳', 33, '南投縣', 		(SELECT * FROM OPENROWSET(BULK N'C:\Servlet\WorkSpace\MyEShopMall\src\main\webapp\Img\User\user6.png', SINGLE_BLOB) as T1), 'user'),
+('test7@example.com', 'password7', '小李', 36, '嘉義市', 		(SELECT * FROM OPENROWSET(BULK N'C:\Servlet\WorkSpace\MyEShopMall\src\main\webapp\Img\User\user7.png', SINGLE_BLOB) as T1), 'user'),
+('test8@example.com', 'password8', '小吳', 40, '雲林縣', 		(SELECT * FROM OPENROWSET(BULK N'C:\Servlet\WorkSpace\MyEShopMall\src\main\webapp\Img\User\user8.png', SINGLE_BLOB) as T1), 'user'),
+('test9@example.com', 'password9', '小許', 45, '台南市', 		(SELECT * FROM OPENROWSET(BULK N'C:\Servlet\WorkSpace\MyEShopMall\src\main\webapp\Img\User\user9.png', SINGLE_BLOB) as T1), 'user'),
+('test10@example.com', 'password10', '小郭', 50, '高雄市', 		(SELECT * FROM OPENROWSET(BULK N'C:\Servlet\WorkSpace\MyEShopMall\src\main\webapp\Img\User\user10.png', SINGLE_BLOB) as T1), 'user'),
+('test11@example.com', 'password11', '小楊', 26, '屏東縣', 		(SELECT * FROM OPENROWSET(BULK N'C:\Servlet\WorkSpace\MyEShopMall\src\main\webapp\Img\User\user11.png', SINGLE_BLOB) as T1), 'user'),
+('test12@example.com', 'password12', '小劉', 29, '台東縣', 		(SELECT * FROM OPENROWSET(BULK N'C:\Servlet\WorkSpace\MyEShopMall\src\main\webapp\Img\User\user12.png', SINGLE_BLOB) as T1), 'user'),
+('test13@example.com', 'password13', '小蔡', 32, '花蓮縣', 		(SELECT * FROM OPENROWSET(BULK N'C:\Servlet\WorkSpace\MyEShopMall\src\main\webapp\Img\User\user13.png', SINGLE_BLOB) as T1), 'user'),
+('test14@example.com', 'password14', '小潘', 35, '宜蘭縣', 		(SELECT * FROM OPENROWSET(BULK N'C:\Servlet\WorkSpace\MyEShopMall\src\main\webapp\Img\User\user14.png', SINGLE_BLOB) as T1), 'user'),
+('test15@example.com', 'password15', '小周', 26, '台東縣', 		(SELECT * FROM OPENROWSET(BULK N'C:\Servlet\WorkSpace\MyEShopMall\src\main\webapp\Img\User\user15.png', SINGLE_BLOB) as T1), 'user'),
+('test16@example.com', 'password16', '小葉', 23, '花蓮縣', 		(SELECT * FROM OPENROWSET(BULK N'C:\Servlet\WorkSpace\MyEShopMall\src\main\webapp\Img\User\user16.png', SINGLE_BLOB) as T1), 'user'),
+('test17@example.com', 'password17', '小翁', 28, '澎湖縣', 		(SELECT * FROM OPENROWSET(BULK N'C:\Servlet\WorkSpace\MyEShopMall\src\main\webapp\Img\User\user17.png', SINGLE_BLOB) as T1), 'user'),
+('test18@example.com', 'password18', '小趙', 32, '金門縣', 		(SELECT * FROM OPENROWSET(BULK N'C:\Servlet\WorkSpace\MyEShopMall\src\main\webapp\Img\User\user18.png', SINGLE_BLOB) as T1), 'user');
+
+
+CREATE TABLE [dbo].[Product] (
+  [pID] INT IDENTITY(1,1) PRIMARY KEY,
+  [name] NVARCHAR(50) NOT NULL,
+  [type] NVARCHAR(50) NOT NULL,
+  [price] INT NOT NULL,
+  [number] INT NOT NULL,
+  [photo] VARBINARY(MAX) NULL,
+  [f_mID] INT NOT NULL,
+  FOREIGN KEY ([f_mID]) REFERENCES [dbo].[Member]([mID])
+);
+
+-- CPU
+INSERT INTO Product (name, type, price, number, photo, f_mID)
+VALUES ('cpu1', 'cpu', 1000, 50, (SELECT * FROM OPENROWSET(BULK N'C:\Servlet\WorkSpace\MyEShopMall\src\main\webapp\Img\Product/cpu/cpu1.png', SINGLE_BLOB) as T1), 4),
+       ('cpu2', 'cpu', 1200, 30, (SELECT * FROM OPENROWSET(BULK N'C:\Servlet\WorkSpace\MyEShopMall\src\main\webapp\Img\Product/cpu/cpu2.png', SINGLE_BLOB) as T1), 4),
+       ('cpu3', 'cpu', 800, 40, (SELECT * FROM OPENROWSET(BULK N'C:\Servlet\WorkSpace\MyEShopMall\src\main\webapp\Img\Product/cpu/cpu3.png', SINGLE_BLOB) as T1), 2),
+       ('cpu4', 'cpu', 1500, 20, (SELECT * FROM OPENROWSET(BULK N'C:\Servlet\WorkSpace\MyEShopMall\src\main\webapp\Img\Product/cpu/cpu4.png', SINGLE_BLOB) as T1), 3),
+       ('cpu5', 'cpu', 2000, 10, (SELECT * FROM OPENROWSET(BULK N'C:\Servlet\WorkSpace\MyEShopMall\src\main\webapp\Img\Product/cpu/cpu5.png', SINGLE_BLOB) as T1), 3);
+
+-- GPU
+INSERT INTO Product (name, type, price, number, photo, f_mID)
+VALUES ('gpu1', 'gpu', 2000, 20, (SELECT * FROM OPENROWSET(BULK N'C:\Servlet\WorkSpace\MyEShopMall\src\main\webapp\Img\Product/gpu/gpu1.png', SINGLE_BLOB) as T1), 4),
+       ('gpu2', 'gpu', 2500, 15, (SELECT * FROM OPENROWSET(BULK N'C:\Servlet\WorkSpace\MyEShopMall\src\main\webapp\Img\Product/gpu/gpu2.png', SINGLE_BLOB) as T1), 4),
+       ('gpu3', 'gpu', 1500, 30, (SELECT * FROM OPENROWSET(BULK N'C:\Servlet\WorkSpace\MyEShopMall\src\main\webapp\Img\Product/gpu/gpu3.png', SINGLE_BLOB) as T1), 4),
+       ('gpu4', 'gpu', 3000, 10, (SELECT * FROM OPENROWSET(BULK N'C:\Servlet\WorkSpace\MyEShopMall\src\main\webapp\Img\Product/gpu/gpu4.png', SINGLE_BLOB) as T1), 4),
+       ('gpu5', 'gpu', 1800, 25, (SELECT * FROM OPENROWSET(BULK N'C:\Servlet\WorkSpace\MyEShopMall\src\main\webapp\Img\Product/gpu/gpu5.png', SINGLE_BLOB) as T1), 2),
+       ('gpu6', 'gpu', 2200, 18, (SELECT * FROM OPENROWSET(BULK N'C:\Servlet\WorkSpace\MyEShopMall\src\main\webapp\Img\Product/gpu/gpu6.png', SINGLE_BLOB) as T1), 2),
+       ('gpu7', 'gpu', 2800, 12, (SELECT * FROM OPENROWSET(BULK N'C:\Servlet\WorkSpace\MyEShopMall\src\main\webapp\Img\Product/gpu/gpu7.png', SINGLE_BLOB) as T1), 2),
+       ('gpu8', 'gpu', 1700, 35, (SELECT * FROM OPENROWSET(BULK N'C:\Servlet\WorkSpace\MyEShopMall\src\main\webapp\Img\Product/gpu/gpu8.png', SINGLE_BLOB) as T1), 3),
+       ('gpu9', 'gpu', 2100, 27, (SELECT * FROM OPENROWSET(BULK N'C:\Servlet\WorkSpace\MyEShopMall\src\main\webapp\Img\Product/gpu/gpu9.png', SINGLE_BLOB) as T1), 3),
+       ('gpu10', 'gpu', 3200, 8, (SELECT * FROM OPENROWSET(BULK N'C:\Servlet\WorkSpace\MyEShopMall\src\main\webapp\Img\Product/gpu/gpu10.png', SINGLE_BLOB) as T1), 3);
+
+-- RAM
+INSERT INTO Product (name, type, price, number, photo, f_mID)
+VALUES ('ram1', 'ram', 500, 80, (SELECT * FROM OPENROWSET(BULK N'C:\Servlet\WorkSpace\MyEShopMall\src\main\webapp\Img\Product/ram/ram1.png', SINGLE_BLOB) as T1), 2),
+       ('ram2', 'ram', 800, 50, (SELECT * FROM OPENROWSET(BULK N'C:\Servlet\WorkSpace\MyEShopMall\src\main\webapp\Img\Product/ram/ram2.png', SINGLE_BLOB) as T1), 2),
+       ('ram3', 'ram', 1000, 40, (SELECT * FROM OPENROWSET(BULK N'C:\Servlet\WorkSpace\MyEShopMall\src\main\webapp\Img\Product/ram/ram3.png', SINGLE_BLOB) as T1), 2),
+       ('ram4', 'ram', 1200, 30, (SELECT * FROM OPENROWSET(BULK N'C:\Servlet\WorkSpace\MyEShopMall\src\main\webapp\Img\Product/ram/ram4.png', SINGLE_BLOB) as T1), 2),
+       ('ram5', 'ram', 1500, 20, (SELECT * FROM OPENROWSET(BULK N'C:\Servlet\WorkSpace\MyEShopMall\src\main\webapp\Img\Product/ram/ram5.png', SINGLE_BLOB) as T1), 2),
+       ('ram6', 'ram', 1800, 15, (SELECT * FROM OPENROWSET(BULK N'C:\Servlet\WorkSpace\MyEShopMall\src\main\webapp\Img\Product/ram/ram6.png', SINGLE_BLOB) as T1), 3),
+       ('ram7', 'ram', 2000, 10, (SELECT * FROM OPENROWSET(BULK N'C:\Servlet\WorkSpace\MyEShopMall\src\main\webapp\Img\Product/ram/ram7.png', SINGLE_BLOB) as T1), 3);
+
+-- SSD
+INSERT INTO Product (name, type, price, number, photo, f_mID)
+VALUES	('ssd1', 'ssd', 800, 40, (SELECT * FROM OPENROWSET(BULK N'C:\Servlet\WorkSpace\MyEShopMall\src\main\webapp\Img\Product/ssd/ssd1.png', SINGLE_BLOB) as T1), 2),
+		('ssd2', 'ssd', 1000, 30, (SELECT * FROM OPENROWSET(BULK N'C:\Servlet\WorkSpace\MyEShopMall\src\main\webapp\Img\Product/ssd/ssd2.png', SINGLE_BLOB) as T1), 2),
+		('ssd3', 'ssd', 2500, 20, (SELECT * FROM OPENROWSET(BULK N'C:\Servlet\WorkSpace\MyEShopMall\src\main\webapp\Img\Product/ssd/ssd3.png', SINGLE_BLOB) as T1), 2),
+		('ssd4', 'ssd', 3000, 12, (SELECT * FROM OPENROWSET(BULK N'C:\Servlet\WorkSpace\MyEShopMall\src\main\webapp\Img\Product/ssd/ssd4.png', SINGLE_BLOB) as T1), 2),
+		('ssd5', 'ssd', 3500, 8, (SELECT * FROM OPENROWSET(BULK N'C:\Servlet\WorkSpace\MyEShopMall\src\main\webapp\Img\Product/ssd/ssd5.png', SINGLE_BLOB) as T1), 2),
+		('ssd6', 'ssd', 1000, 5, (SELECT * FROM OPENROWSET(BULK N'C:\Servlet\WorkSpace\MyEShopMall\src\main\webapp\Img\Product/ssd/ssd6.png', SINGLE_BLOB) as T1), 2),
+		('ssd7', 'ssd', 2000, 3, (SELECT * FROM OPENROWSET(BULK N'C:\Servlet\WorkSpace\MyEShopMall\src\main\webapp\Img\Product/ssd/ssd7.png', SINGLE_BLOB) as T1), 3),
+		('ssd8', 'ssd', 3000, 7, (SELECT * FROM OPENROWSET(BULK N'C:\Servlet\WorkSpace\MyEShopMall\src\main\webapp\Img\Product/ssd/ssd8.png', SINGLE_BLOB) as T1), 3),
+		('ssd9', 'ssd', 4000, 4, (SELECT * FROM OPENROWSET(BULK N'C:\Servlet\WorkSpace\MyEShopMall\src\main\webapp\Img\Product/ssd/ssd9.png', SINGLE_BLOB) as T1), 3),
+		('ssd10', 'ssd', 4500, 8, (SELECT * FROM OPENROWSET(BULK N'C:\Servlet\WorkSpace\MyEShopMall\src\main\webapp\Img\Product/ssd/ssd10.png', SINGLE_BLOB) as T1), 3);

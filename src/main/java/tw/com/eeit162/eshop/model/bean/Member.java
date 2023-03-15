@@ -11,6 +11,7 @@ public class Member implements Serializable{
 	private String name;
 	private int age;
 	private String address;
+	private byte[] pic;
 	private String authority;
 	
 	public Member() {
@@ -54,18 +55,30 @@ public class Member implements Serializable{
 		this.age = age;
 		this.address = address;
 	}
-	public Member(int mID, String email, String password, String name, int age, String address, String authority) {
+	
+	public Member(String email, String password, String name, int age, String address, byte[] pic,
+			String authority) {
+		this.email = email;
+		this.password = password;
+		this.name = name;
+		this.age = age;
+		this.address = address;
+		this.pic = pic;
+		this.authority = authority;
+	}
+	
+
+	public Member(int mID, String email, String password, String name, int age, String address, byte[] pic,
+			String authority) {
 		this.mID = mID;
 		this.email = email;
 		this.password = password;
 		this.name = name;
 		this.age = age;
 		this.address = address;
+		this.pic = pic;
 		this.authority = authority;
 	}
-	
-	
-
 	public int getmID() {
 		return mID;
 	}
@@ -114,6 +127,14 @@ public class Member implements Serializable{
 		this.address = address;
 	}
 
+	public byte[] getPic() {
+		return pic;
+	}
+	
+	public void setPic(byte[] pic) {
+		this.pic = pic;
+	}
+	
 	public String getAuthority() {
 		return authority;
 	}

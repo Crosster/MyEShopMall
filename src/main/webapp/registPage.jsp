@@ -115,10 +115,7 @@
 										<div class="col-md-9 pe-5">
 
 											<input name="mPic" class="form-control form-control-lg" id="formFileLg" type="file">
-											<div class="small text-muted mt-2">Upload your CV/Resume or any other
-												relevant file.
-												Max file
-												size 50 MB</div>
+											<div class="small text-muted mt-2">Upload png file. Max filesize 2 MB</div>
 
 										</div>
 									</div>

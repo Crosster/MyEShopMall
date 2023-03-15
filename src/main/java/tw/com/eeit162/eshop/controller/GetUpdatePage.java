@@ -25,7 +25,7 @@ public class GetUpdatePage extends HttpServlet {
 			Connection conn = MyConnectionFactory.getConnection();
 			MemberDAO mDAO = new MemberDAO(conn);			
 			Member m = mDAO.findMemberByID(mID);
-			
+			System.out.println(m);
 			conn.close();
 			
 			request.setAttribute("mData", m);

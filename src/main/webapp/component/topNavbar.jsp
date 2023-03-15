@@ -5,21 +5,23 @@
 
 <header
 	class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
-	<a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="/MyEShopMall/main.jsp">Company
-		name</a>
-	<button class="navbar-toggler position-absolute d-md-none collapsed"
-		type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu"
-		aria-controls="sidebarMenu" aria-expanded="false"
-		aria-label="Toggle navigation">
-		<span class="navbar-toggler-icon"></span>
-	</button>
-	<input class="form-control form-control-dark w-100" type="text"
-		placeholder="Search" aria-label="Search">
-
-	<c:if test="${sessionScope.username != null}">
-		<span style="color: aliceblue;">HI, ${sessionScope.username}</span>
+	<a class="navbar-brand col-lg-2 me-0 px-3" href="ShowAllProduct.do">回主頁</a>
+	<c:if test="${sessionScope.mData.name != null}">
+	<a class="navbar-brand col-lg-2 me-0 px-3" href="/MyEShopMall/userPage.jsp">回個人頁面</a>	
 	</c:if>
-
+	
+	<form action="ShowProductByName.do" style="display: flex; flex: auto;">
+	<input name="search" class="form-control form-control-dark w-100" type="text"
+		placeholder="搜尋您的商品" aria-label="Search">
+	<button class="btn btn-outline-success" style="color: rgb(243, 247, 235);" type="submit">Search</button>
+	</form>
+  
+	<c:if test="${sessionScope.mData.name != null}">
+		<span style="color: aliceblue;width: 100px;text-align: center;">
+		HI, ${sessionScope.mData.name}
+		</span>
+	</c:if>
+	<c:if test="${sessionScope.mData.name == null}">
 	<div class="navbar-nav">
 		<div class="nav-item text-nowrap">
 			<a class="nav-link px-3" href="/MyEShopMall/registPage.jsp">註冊</a>
@@ -30,4 +32,12 @@
 			<a class="nav-link px-3" href="/MyEShopMall/login.jsp">登入</a>
 		</div>
 	</div>
+	</c:if>
+	<c:if test="${sessionScope.mData.name != null}">
+	<div class="navbar-nav">
+		<div class="nav-item text-nowrap">
+			<a class="nav-link px-3" href="/MyEShopMall/login.jsp">登出</a>
+		</div>
+	</div>
+	</c:if>
 </header>

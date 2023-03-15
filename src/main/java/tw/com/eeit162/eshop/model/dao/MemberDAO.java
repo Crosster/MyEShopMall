@@ -18,13 +18,15 @@ public class MemberDAO {
 	
 	public boolean createMember(Member member){		
 		try {
-			String SQL = "INSERT INTO [MyEShopMall].[dbo].[Member] (email, password, name, age, address) VALUES (?,?,?,?,?)";
+			String SQL = "INSERT INTO [MyEShopMall].[dbo].[Member] (email, password, name, age, address, pic, authority) VALUES (?,?,?,?,?,?,?)";
 			PreparedStatement preStmt = conn.prepareStatement(SQL);
 			preStmt.setString(1, member.getEmail());
 			preStmt.setString(2, member.getPassword());
 			preStmt.setString(3, member.getName());
 			preStmt.setInt(4, member.getAge());
 			preStmt.setString(5, member.getAddress());	
+			preStmt.setBytes(6, member.getPic());	
+			preStmt.setString(7, member.getAuthority());	
 			preStmt.executeUpdate();
 			
 			preStmt.close();
@@ -55,6 +57,8 @@ public class MemberDAO {
 				member.setName(rs.getString("name"));
 				member.setAge(rs.getInt("age"));
 				member.setAddress(rs.getString("address"));
+				member.setPic(rs.getBytes("pic"));
+				member.setAuthority(rs.getString("Authority"));
 				
 				rs.close();
 				preStmt.close();
@@ -82,6 +86,8 @@ public class MemberDAO {
 				member.setName(rs.getString("name"));
 				member.setAge(rs.getInt("age"));
 				member.setAddress(rs.getString("address"));
+				member.setPic(rs.getBytes("pic"));
+				member.setAuthority(rs.getString("Authority"));
 				
 				mList.add(member);
 			}
@@ -170,6 +176,8 @@ public class MemberDAO {
 			member.setName(rs.getString("name"));
 			member.setAge(rs.getInt("age"));
 			member.setAddress(rs.getString("address"));
+			member.setPic(rs.getBytes("pic"));
+			member.setAuthority(rs.getString("Authority"));
 			}
 			rs.close();
 			preStmt.close();

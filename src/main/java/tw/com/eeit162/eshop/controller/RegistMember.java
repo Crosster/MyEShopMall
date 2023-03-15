@@ -26,19 +26,20 @@ public class RegistMember extends HttpServlet {
 		String mName = request.getParameter("mName");
 		int mAge =Integer.parseInt(request.getParameter("mAge"));
 		String mAddress = request.getParameter("mAddress");
-//		String mPic = request.getParameter("mPic");
+		byte[] mPic = request.getParameter("mPic").getBytes("ISO8859-1");
+		String mAuthority = "user";
 		
 		try {
 			Connection conn = MyConnectionFactory.getConnection();
 			MemberDAO memberDAO = new MemberDAO(conn);
 			
-			Member m = new Member(mEmail, mPwd, mName, mAge, mAddress);
-			
+			Member m = new Member(mEmail, mPwd, mName, mAge, mAddress,mPic,mAuthority);
+			System.out.println(m);
 			memberDAO.createMember(m);
 			
 			conn.close();
 			
-			response.sendRedirect("index.jsp");
+			response.sendRedirect("login.jsp");
 						
 		} catch (Exception e) {
 			e.printStackTrace();

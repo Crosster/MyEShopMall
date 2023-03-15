@@ -26,24 +26,26 @@ public class UserLogin extends HttpServlet {
 			MemberDAO memberDAO = new MemberDAO(conn);
 			
 			Member m = memberDAO.loginMember(email,password);
-			
+			System.out.println(m);
 			conn.close();
 			
-			if(m!=null) {
+			if(m.getName()!=null) {
 				HttpSession session = request.getSession();
-				session.setAttribute("username", m.getName());
-				session.setAttribute("Authority", m.getAuthority());
+				session.setAttribute("mData", m);
 				
-				if(m.getAuthority()=="") {
+				if(m.getAuthority().equals("admin")) {
 //					request.getRequestDispatcher("index.jsp").forward(request, response);
 					response.sendRedirect("modPage.jsp");
-				}else {
+				}else
+//					if(m.getAuthority().equals("shopper")) {
+//					response.sendRedirect("shopperPage.jsp");
+//				}else 
+				{
 					response.sendRedirect("userPage.jsp");
 				}
 			}else {
-				response.sendRedirect("login.jsp");
-	            PrintWriter out = response.getWriter();
-				out.println("<font color=red>帳號或密碼錯誤，請重新登入。</font>");
+				request.setAttribute("logfailmsg", "登入失敗");
+				request.getRequestDispatcher("main.jsp").forward(request, response);
 			}
 			
 						
