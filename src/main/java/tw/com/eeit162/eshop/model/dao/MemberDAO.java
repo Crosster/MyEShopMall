@@ -132,6 +132,8 @@ public class MemberDAO {
 
 			conn.commit();
 			conn.setAutoCommit(true);
+			
+			preStmt.close();
 
 			return true;
 		} catch (SQLException e) {
@@ -144,6 +146,41 @@ public class MemberDAO {
 			e.printStackTrace();
 		}
 		return false;
+	}
+	/**
+	 * input email,password
+	 * @param email
+	 * @param password
+	 * @return 
+	 * @return
+	 */
+	public Member loginMember(String email,String password) {
+		try {
+			String SQL = "SELECT * FROM [MyEShopMall].[dbo].[Member] WHERE email = ? AND password = ?";
+
+			PreparedStatement preStmt = conn.prepareStatement(SQL);
+			preStmt.setString(1, email);
+			preStmt.setString(2, password);
+			ResultSet rs = preStmt.executeQuery();
+			Member member = new Member();
+			if(rs.next()) {
+			member.setmID(rs.getInt("mID"));
+			member.setEmail(rs.getString("email"));
+			member.setPassword(rs.getString("password"));
+			member.setName(rs.getString("name"));
+			member.setAge(rs.getInt("age"));
+			member.setAddress(rs.getString("address"));
+			}
+			rs.close();
+			preStmt.close();
+
+			return member;
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return null;
 	}
 	
 

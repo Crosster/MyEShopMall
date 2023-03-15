@@ -5,6 +5,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import tw.com.eeit162.eshop.conn.MyConnectionFactory;
 import tw.com.eeit162.eshop.model.bean.Member;
 import tw.com.eeit162.eshop.model.dao.MemberDAO;
@@ -28,7 +29,6 @@ public class GetUpdatePage extends HttpServlet {
 			conn.close();
 			
 			request.setAttribute("mData", m);
-			request.setAttribute("mIDkv", m.getmID());
 			request.getRequestDispatcher("updatePage.jsp").forward(request, response);
 			
 		} catch (Exception e) {

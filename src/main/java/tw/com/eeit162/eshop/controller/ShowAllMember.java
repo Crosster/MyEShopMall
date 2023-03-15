@@ -11,7 +11,6 @@ import tw.com.eeit162.eshop.model.dao.MemberDAO;
 
 import java.io.IOException;
 import java.sql.Connection;
-import java.util.ArrayList;
 import java.util.List;
 
 @WebServlet(urlPatterns = "/ShowAllMember.do")

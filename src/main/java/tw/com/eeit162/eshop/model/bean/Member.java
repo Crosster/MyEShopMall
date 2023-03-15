@@ -15,14 +15,38 @@ public class Member implements Serializable{
 	
 	public Member() {
 	}
-	
-	public Member(String email, String password, String name,String address) {
+	/**
+	 * login
+	 * @param email
+	 * @param password
+	 */
+	public Member(String email,String password) {
+		this.email = email;
+		this.password = password;
+	}
+	/**
+	 * update
+	 * @param mID
+	 * @param email
+	 * @param password
+	 * @param name
+	 * @param address
+	 */
+	public Member(int mID,String email, String password, String name,String address) {
+		this.mID = mID;
 		this.email = email;
 		this.password = password;
 		this.name = name;
 		this.address = address;
 	}
-	
+	/**
+	 * regist
+	 * @param email
+	 * @param password
+	 * @param name
+	 * @param age
+	 * @param address
+	 */
 	public Member(String email, String password, String name, int age, String address) {
 		this.email = email;
 		this.password = password;

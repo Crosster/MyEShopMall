@@ -5,6 +5,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import tw.com.eeit162.eshop.conn.MyConnectionFactory;
 import tw.com.eeit162.eshop.model.bean.Member;
 import tw.com.eeit162.eshop.model.dao.MemberDAO;
@@ -17,12 +18,8 @@ public class UpdateMember extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("hello");
-//		int mID = (int) request.getAttribute("mIDkv");
 		
-		int mID = 20;
-		
-		System.out.println(mID);
+		Integer mID =Integer.valueOf(request.getParameter("mID"));
 		String mEmail = request.getParameter("mEmail");
 		String mPwd = request.getParameter("mPwd");
 		String mName = request.getParameter("mName");
@@ -33,8 +30,7 @@ public class UpdateMember extends HttpServlet {
 			Connection conn = MyConnectionFactory.getConnection();
 			MemberDAO memberDAO = new MemberDAO(conn);
 			
-			Member m = new Member(mEmail, mPwd, mName, mAddress);
-			
+			Member m = new Member(mID,mEmail, mPwd, mName, mAddress);
 			memberDAO.updateMember(mID,m);
 			
 			conn.close();

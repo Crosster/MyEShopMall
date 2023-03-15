@@ -49,4 +49,14 @@
     <servlet-name>UpdateMember</servlet-name>
     <url-pattern>/UpdateMember</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>UserLogin</display-name>
+    <servlet-name>UserLogin</servlet-name>
+    <servlet-class>tw.com.eeit162.eshop.controller.UserLogin</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UserLogin</servlet-name>
+    <url-pattern>/UserLogin</url-pattern>
+  </servlet-mapping>
 </web-app>
