@@ -19,3 +19,33 @@
 
 
 登入
+
+主頁
+Topbar
+商品列表
+<hr/>
+登入判斷身份
+1.一般使用者
+sidebar-會員資料
+右邊會員資料(可修改)
+2.經銷商
+sidebar-會員資料
+sidebar-修改商品資料
+sidebar-商品銷售記錄(新建商品銷售記錄表)
+3.網站管理員
+sidebar-查看所有會員資料
+<hr/>
+購物功能開啟 
+現在有的商品屬性
+Product(int pID, String name, String type, byte[] photo, int f_mID)
+
+還需要新增 商品數量 商品價格
+經銷商
+shopperA
+SSD
+RAM
+shopperB
+GPU
+shopperC
+代理商
+都有賣
