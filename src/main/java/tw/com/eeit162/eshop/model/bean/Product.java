@@ -88,7 +88,7 @@ public class Product {
 	@Override
 	public String toString() {
 		return "Product [pID=" + pID + ", name=" + name + ", type=" + type + ", price=" + price + ", number=" + number
-				+ ", photo=" + Arrays.toString(photo) + ", f_mID=" + f_mID + "]";
+				+ ", f_mID=" + f_mID + "]";
 	}
 	
 }

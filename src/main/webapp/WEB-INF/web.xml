@@ -109,4 +109,14 @@
     <servlet-name>UpdateProduct</servlet-name>
     <url-pattern>/UpdateProduct</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>GetProductUpdatePage</display-name>
+    <servlet-name>GetProductUpdatePage</servlet-name>
+    <servlet-class>tw.com.eeit162.eshop.controller.GetProductUpdatePage</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GetProductUpdatePage</servlet-name>
+    <url-pattern>/GetProductUpdatePage</url-pattern>
+  </servlet-mapping>
 </web-app>

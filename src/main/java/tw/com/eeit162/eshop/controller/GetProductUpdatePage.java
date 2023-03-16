@@ -5,31 +5,26 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
 import tw.com.eeit162.eshop.conn.MyConnectionFactory;
-import tw.com.eeit162.eshop.model.bean.Member;
-import tw.com.eeit162.eshop.model.dao.MemberDAO;
+import tw.com.eeit162.eshop.model.bean.Product;
+import tw.com.eeit162.eshop.model.dao.ProductDAO;
 
 import java.io.IOException;
 import java.sql.Connection;
-import java.util.List;
-
-@WebServlet(urlPatterns = "/GetUpdatePage.do")
-public class GetUpdatePage extends HttpServlet {
+@WebServlet(urlPatterns = "/GetProductUpdatePage.do")
+public class GetProductUpdatePage extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		Integer mID=Integer.valueOf(request.getParameter("mID"));
-			
+		Integer pID=Integer.valueOf(request.getParameter("pID"));
+		
 		try {
 			Connection conn = MyConnectionFactory.getConnection();
-			MemberDAO mDAO = new MemberDAO(conn);			
-			Member m = mDAO.findMemberByID(mID);
-			System.out.println(m);
+			ProductDAO pDAO = new ProductDAO(conn);			
+			Product p = pDAO.findProductByID(pID);
 			conn.close();
 			
-			request.setAttribute("mData", m);
-			request.getRequestDispatcher("updatePage.jsp").forward(request, response);
+			request.setAttribute("pData", p);
+			request.getRequestDispatcher("index.jsp").forward(request, response);
 			
 		} catch (Exception e) {
 			e.printStackTrace();

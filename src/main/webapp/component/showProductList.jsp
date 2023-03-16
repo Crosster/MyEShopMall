@@ -27,7 +27,7 @@
 				</div>
 				<c:if test="${sessionScope.mData.authority == 'shopper'}">
 				<div class="card-body" style="text-align: center;">
-					<a href="#" class="card-link">更改數量/價格</a>
+					<a href="GetProductUpdatePage.do?pID=${p.pID}"><button>更改數量/價格</button></a>
 				</div>
 				</c:if>
 			</div>

@@ -34,10 +34,11 @@
 			<span></span> 自家產品列表
 			</a></li>
 			</c:if>
-			
+			<c:if test="${0==1}">
 			<li class="nav-item"><a class="nav-link" href="#"> 
 			<span></span> 交易紀錄
 			</a></li>
+			</c:if>
 		</ul>
 	</div>
 </nav>

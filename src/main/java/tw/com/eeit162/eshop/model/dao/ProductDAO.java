@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import tw.com.eeit162.eshop.model.bean.Member;
 import tw.com.eeit162.eshop.model.bean.Product;
 import tw.com.eeit162.eshop.model.bean.Product;
 
@@ -131,5 +132,32 @@ public class ProductDAO {
 
 		return false;
 		
+	}
+
+	public Product findProductByID(int pID) {
+		try {
+			String SQL = "SELECT * FROM [MyEShopMall].[dbo].[Product] WHERE pID = ?";
+			PreparedStatement preStmt = conn.prepareStatement(SQL);
+			preStmt.setInt(1, pID);
+			ResultSet rs = preStmt.executeQuery();
+			
+			if(rs.next()) {
+				Product product = new Product();
+				product.setpID(rs.getInt("pID"));
+				product.setName(rs.getString("name"));
+				product.setType(rs.getString("type"));
+				product.setPrice(rs.getInt("price"));
+				product.setNumber(rs.getInt("number"));
+				product.setPhoto(rs.getBytes("photo"));
+				product.setF_mID(rs.getInt("f_mID"));
+				
+				rs.close();
+				preStmt.close();
+				return product;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 }

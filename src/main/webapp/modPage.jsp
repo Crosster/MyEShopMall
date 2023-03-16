@@ -42,12 +42,12 @@
 
 <body>
 	<!-- navbar -->
-	<jsp:include page="component/topNavbar.jsp"/>
+	<jsp:include page="component/topNavbar.jsp" />
 
 	<div class="container-fluid">
 		<div class="row">
 			<!-- sidebar -->
-			<jsp:include page="component/sidebar.jsp"/>
+			<jsp:include page="component/sidebar.jsp" />
 
 
 			<main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
@@ -75,11 +75,12 @@
 									<td>${m.name}</td>
 									<td>${m.age}</td>
 									<td>${m.address}</td>
-									<td><img src="GetPhoto.do?mID=${m.mID}" style="width: 100px;"></td>
+									<td><img src="GetPhoto.do?mID=${m.mID}"
+										style="width: 100px;"></td>
 									<td>${m.authority}</td>
 									<td><a href="DeleteMemberByID.do?mID=${m.mID}"><button>刪除</button></a>
 									</td>
-									<td><a href="GetUpdatePage.do?mID=${m.mID}"><button>更新</button></a>
+									<td><a href="GetMemberUpdatePage.do?mID=${m.mID}"><button>更新</button></a>
 									</td>
 								</tr>
 							</c:forEach>
@@ -92,7 +93,9 @@
 		</div>
 	</div>
 
-	<footer> </footer>
+	<footer>
+		<jsp:include page="component/footers/footer.jsp" />
+	</footer>
 
 
 

@@ -21,6 +21,7 @@ public class GetPhoto extends HttpServlet {
 			throws ServletException, IOException {
 		
 		if (request.getParameter("mID") != null) {
+			System.out.println("getMemberPhoto");
 			Integer mID = Integer.valueOf(request.getParameter("mID"));
 			try {
 				Connection conn = MyConnectionFactory.getConnection();
@@ -49,6 +50,7 @@ public class GetPhoto extends HttpServlet {
 		}
 		
 		if (request.getParameter("pID") != null) {
+			System.out.println("getProductPhoto");
 			Integer pID = Integer.valueOf(request.getParameter("pID"));
 			try {
 				Connection conn = MyConnectionFactory.getConnection();

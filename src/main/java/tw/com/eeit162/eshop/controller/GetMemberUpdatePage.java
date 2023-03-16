@@ -12,31 +12,24 @@ import tw.com.eeit162.eshop.model.dao.MemberDAO;
 
 import java.io.IOException;
 import java.sql.Connection;
+import java.util.List;
 
-@WebServlet(urlPatterns = "/UpdateMember.do")
-public class UpdateMember extends HttpServlet {
+@WebServlet(urlPatterns = "/GetMemberUpdatePage.do")
+public class GetMemberUpdatePage extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		Integer mID =Integer.valueOf(request.getParameter("mID"));
-		String mEmail = request.getParameter("mEmail");
-		String mPwd = request.getParameter("mPwd");
-		String mName = request.getParameter("mName");
-		String mAddress = request.getParameter("mAddress");
-//		String mPic = request.getParameter("mPic");
-		
+		Integer mID=Integer.valueOf(request.getParameter("mID"));
+			
 		try {
 			Connection conn = MyConnectionFactory.getConnection();
-			MemberDAO memberDAO = new MemberDAO(conn);
-			
-			Member m = new Member(mID,mEmail, mPwd, mName, mAddress);
-			memberDAO.updateMember(mID,m);
-			
+			MemberDAO mDAO = new MemberDAO(conn);			
+			Member m = mDAO.findMemberByID(mID);
+			System.out.println(m);
 			conn.close();
 			
-			response.sendRedirect("ShowAllMember.do");
-						
+			request.setAttribute("mData", m);
+			request.getRequestDispatcher("updatePage.jsp").forward(request, response);
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

@@ -68,32 +68,33 @@
 		<div class="row">
 			<!-- sidebar -->
 			<jsp:include page="component/sidebar.jsp" />
-			<main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-				<form action="UpdateMember.do" method="post">
-					<div class="product-wall">
-						<div class="card" style="width: 26vw; margin: 20px">
-							<img src="GetPhoto.do?pID=${pData.pID}"
-								style="width: 120px; margin: auto; padding: 5px;">
-							<div class="card-body">
-								<input name="pID" type="hidden">${pData.pID} <input
-									name="pName" type="text" placeholder="${pData.name}"> <input
-									name="pNumber" type="text" placeholder="${pData.number}">
-								<input name="pPrice" type="text" placeholder="${pData.price}">
-								<input name="pType" type="hidden">${pData.type}
-								<p>f_mID:${pData.f_mID}</p>
-								<button type="submit" class="btn btn-primary btn-lg">送出修改</button>
-							</div>
-							HI
-							<c:if test="${sessionScope.mData.authority == 'shopper'}">
-								<div class="card-body" style="text-align: center;">
-									<a href="UpdateProduct.do?pID=${pData.pID}" class="card-link">更改數量/價格</a>
-								</div>
-							</c:if>
-						</div>
 
+			<div class="product-wall">
+				<form action="UpdateMember.do" method="post">
+				<c:forEach items="${pData}" var="p2">
+					<div class="card" style="width: 26vw; margin: 20px">
+						<img src="GetPhoto.do?pID=${p2.pID}"
+							style="width: 120px; margin: auto; padding: 5px;">
+						<div class="card-body">
+								<input name="pID" type="hidden">${p2.pID}
+								<input name="pName" type="text" placeholder="${p2.name}"> 
+								<input name="pNumber" type="text" placeholder="${p2.number}">
+								<input name="pPrice" type="text" placeholder="${p2.price}">
+								<input name="pType" type="hidden">${p2.type}
+								<p>f_mID:${p2.f_mID}</p>
+								<button type="submit" class="btn btn-primary btn-lg">送出修改</button>
+						</div>
+						<c:if test="${sessionScope.mData.authority == 'shopper'}">
+							<div class="card-body" style="text-align: center;">
+								<a href="GetProductUpdatePage.do?pID=${p2.pID}"
+									class="card-link">更改數量/價格</a>
+							</div>
+						</c:if>
 					</div>
+				</c:forEach>
 				</form>
-			</main>
+			</div>
+
 		</div>
 	</div>
 
